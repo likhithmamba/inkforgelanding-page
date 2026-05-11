@@ -40,7 +40,7 @@ export function MagneticButton({ children, className = '', onClick, primary = tr
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
         onClick={onClick}
-        animate={{ x: position.x, y: position.y }}
+        animate={{ x: position.x, y: position.y, scale: isHovered ? 1.04 : 1 }}
         transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
         className={`relative inline-flex items-center justify-center gap-2.5 px-10 py-3.5 bg-gradient-to-r from-crimson to-gold-1 text-bone font-mono text-[9.5px] uppercase tracking-[2.5px] overflow-hidden ${className}`}
         style={{
@@ -68,9 +68,10 @@ export function MagneticButton({ children, className = '', onClick, primary = tr
     <motion.button
       ref={ref}
       onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      animate={{ x: position.x, y: position.y }}
+      animate={{ x: position.x, y: position.y, scale: isHovered ? 1.04 : 1 }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       className={`font-mono text-[9.5px] uppercase tracking-[2.5px] px-7 py-3.5 bg-transparent text-gold-1 border border-gold-1/30 hover:border-gold-1 hover:bg-gold-1/10 hover:shadow-[0_0_20px_rgba(200,132,58,0.2)] transition-all duration-300 ${className}`}
     >

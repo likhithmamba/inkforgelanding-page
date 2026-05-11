@@ -88,7 +88,7 @@ export function WhyInkforge() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8 }}
-              className={`bg-ink p-[36px_40px] md:p-[48px_56px] cursor-none group transition-colors duration-500 hover:bg-surface relative overflow-hidden ${card.span} flex flex-col md:flex-row gap-8 justify-between`}
+              className={`bg-ink p-[36px_40px] md:p-[48px_56px] cursor-none group transition-colors duration-500 hover:bg-surface relative overflow-hidden ${card.span} flex ${card.span.includes('col-span-2') ? 'flex-col lg:flex-row' : 'flex-col'} gap-8 justify-between`}
             >
               <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-gold-1/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 m-2" />
               <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gold-1/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 m-2" />
@@ -104,7 +104,7 @@ export function WhyInkforge() {
               </div>
               
               {card.visual && (
-                <div className="flex-shrink-0 z-10 relative">
+                <div className="flex-shrink-0 min-w-0 z-10 relative">
                   {card.visual}
                 </div>
               )}

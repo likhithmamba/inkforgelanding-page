@@ -78,7 +78,7 @@ export function Testimonials() {
           <h2 className="text-[clamp(42px,5.5vw,76px)] font-black leading-[1.0] tracking-[-1.5px] text-bone drop-shadow-lg">
             Voices from the<br/>
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-gold-1 to-[#E8A855] italic font-thin pr-4 pb-2">
-              Veiled Realm.
+              studio.
             </span>
           </h2>
         </motion.div>

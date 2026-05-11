@@ -32,7 +32,7 @@ export function Navbar() {
         Inkforge
       </a>
       
-      <ul className="hidden md:flex gap-7">
+      <ul className="hidden md:flex gap-5 lg:gap-8">
         {['Editor', 'Intelligence', 'Publishing', 'Languages', 'Pricing'].map(item => (
           <li key={item}>
             <a 

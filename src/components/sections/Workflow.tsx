@@ -1,75 +1,51 @@
-import { motion, useScroll, useSpring } from 'motion/react';
-import { useRef } from 'react';
+import { motion } from 'motion/react';
 
 const STEPS = [
-  { n: 'Part 1', name: 'The Manuscript', desc: 'Write natively in any language. The engine handles formatting, typography, and counting simultaneously.' },
-  { n: 'Part 2', name: 'The Intelligence', desc: 'Nine systems read your story structure, tracking tension, threads, timelines, and character voice.' },
-  { n: 'Part 3', name: 'The Submission', desc: 'Generate a complete, publisher-ready packet: manuscript, synopsis, and query letter in one click.' }
+  { num: '1', title: 'Write', desc: 'In your language. Intelligence runs beside you — tension, threads, continuity, voice.' },
+  { num: '2', title: 'Analyse', desc: 'Nine systems assess every dimension of your manuscript as you complete it.' },
+  { num: '3', title: 'Refine', desc: 'AI feedback in your language. Depth and Extended modes for scene and manuscript level.' },
+  { num: '4', title: 'Format', desc: 'Publisher-ready export with correct fonts, margins, and formatting — automatically.' },
+  { num: '5', title: 'Submit', desc: 'Complete packet — query, synopsis, manuscript. One click. Every publisher.' }
 ];
 
 export function Workflow() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"]
-  });
-  const lineProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
-
   return (
-    <section id="workflow" className="py-[160px] px-12 bg-surface border-y border-rule relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-1/[0.02] rounded-full blur-[100px] pointer-events-none" />
-      <div className="max-w-[1280px] mx-auto relative z-10" ref={containerRef}>
+    <section id="workflow" className="py-[160px] px-12 bg-void relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(138,31,46,0.03),transparent_60%)] pointer-events-none" />
+      <div className="max-w-[1280px] mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 36 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <div className="font-mono text-[9px] tracking-[4px] uppercase text-gold-1 flex items-center gap-3.5 mb-6">
-            <div className="w-[30px] h-px bg-gold-1" /> Foundation
+          <div className="font-mono text-[9px] tracking-[4px] uppercase text-gold-1 flex items-center gap-3.5 mb-8">
+            <div className="w-[30px] h-px bg-gold-1" /> WORKFLOW
           </div>
-          <h2 className="text-[clamp(42px,5.5vw,76px)] font-black leading-[1.0] tracking-[-1.5px] text-bone mb-4 drop-shadow-lg">
-             The creative process,<br/>
-             <em className="italic font-thin text-transparent bg-clip-text bg-gradient-to-r from-gold-1 to-[#E8A855] drop-shadow-sm">streamlined.</em>
+          <h2 className="text-[clamp(50px,7.5vw,100px)] font-display font-black leading-[1.0] tracking-[-2.5px] text-bone mb-1">
+             Write to published.
           </h2>
-          <p className="font-mono text-[13px] leading-[1.9] text-muted max-w-[500px]">
-             From the first blank page to the final query letter. Three distinct phases engineered to keep you focused on the narrative.
-          </p>
+          <div className="text-[clamp(46px,6.5vw,84px)] font-display italic font-thin text-gold-1 leading-[1.0] drop-shadow-[0_0_15px_rgba(200,132,58,0.2)] mb-20 tracking-[-1.5px]">
+             Five steps.
+          </div>
         </motion.div>
 
-        <div className="mt-24 pl-8 md:pl-0">
-          <div className="relative">
-            {/* The line */}
-            <div className="absolute left-[39px] top-4 bottom-4 w-px bg-rule hidden md:block" />
+        <div className="grid grid-cols-1 md:grid-cols-5 border border-[rgba(200,132,58,0.2)] mt-12 group/grid relative z-20 bg-[#09090E]/60 backdrop-blur-xl shadow-[0_0_50px_rgba(138,31,46,0.15)] rounded-sm">
+          {STEPS.map((s, i) => (
             <motion.div 
-              className="absolute left-[39px] top-4 origin-top w-px bg-gradient-to-b from-gold-1 via-[#40D8A8] to-gold-2 hidden md:block"
-              style={{ scaleY: lineProgress, height: '100%' }}
-            />
-            
-            <div className="flex flex-col gap-[60px] md:gap-[80px]">
-              {STEPS.map((s, i) => (
-                <div key={i} className="flex flex-col md:flex-row items-start gap-8 md:gap-16 relative group cursor-none">
-                  <div className="hidden md:flex flex-col items-center z-10 relative mt-2 shrink-0">
-                    <div className="w-[80px] h-[80px] rounded-full bg-void border border-rule group-hover:border-gold-1/30 flex items-center justify-center font-display text-[32px] font-black italic text-gold-1/30 group-hover:text-gold-1 shadow-[0_0_15px_rgba(200,132,58,0)] group-hover:shadow-[0_0_30px_rgba(200,132,58,0.15)] transition-all duration-500 bg-surface">
-                      {i + 1}
-                    </div>
-                  </div>
-                  
-                  <div className="flex-1 bg-ink border border-rule group-hover:border-gold-1/30 p-10 md:p-14 relative overflow-hidden transition-all duration-500 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] md:-translate-y-4">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold-1/0 to-gold-1/[0.02] group-hover:from-gold-1/[0.03] transition-colors duration-500" />
-                    <div className="absolute left-0 top-0 w-1 h-full bg-rule group-hover:bg-gold-1/50 transition-colors duration-500" />
-                    
-                    <div className="relative z-10">
-                      <div className="font-mono text-[10px] tracking-[2px] uppercase text-gold-1 mb-4 flex items-center gap-3">
-                         {s.n} <span className="w-12 h-px bg-gold-1/30 group-hover:w-20 transition-all duration-500" />
-                      </div>
-                      <h3 className="font-display text-[36px] md:text-[48px] font-black text-bone mb-6 leading-none">
-                        {s.name}
-                      </h3>
-                      <p className="font-mono text-[13px] leading-[1.8] text-muted max-w-[600px] group-hover:text-bone/80 transition-colors">
-                        {s.desc}
-                      </p>
-                    </div>
-                  </div>
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              key={i} 
+              className={`border-[rgba(200,132,58,0.1)] relative overflow-hidden group hover:bg-[#050508]/80 transition-all duration-500 p-[60px_24px] flex flex-col items-center text-center ${i !== STEPS.length - 1 ? 'border-b md:border-b-0 md:border-r' : ''}`}
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-crimson/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className="relative mb-8 flex justify-center items-center h-[70px] w-full">
+                <div className="w-12 h-12 border border-rule/70 text-gold-1/80 group-hover:border-gold-1/40 group-hover:text-gold-1 flex items-center justify-center font-display text-[22px] italic transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(200,132,58,0.3)] group-hover:scale-110">
+                  {s.num}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+              
+              <h3 className="font-display font-bold text-[17px] text-bone mb-3.5 group-hover:text-gold-1 transition-colors relative z-10">{s.title}</h3>
+              <p className="font-mono text-[9.5px] text-muted leading-[1.8] group-hover:text-bone/80 transition-colors px-2 relative z-10">{s.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

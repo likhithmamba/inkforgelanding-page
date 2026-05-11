@@ -26,7 +26,7 @@ export function Hero() {
             initial={{ y: '110%', opacity: 0 }}
             animate={{ y: '0%', opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            className="block text-transparent bg-clip-text bg-gradient-to-r from-bone via-gold-1 to-bone/60 pb-8 animate-shimmer"
+            className="block text-transparent bg-clip-text bg-gradient-to-r from-bone via-gold-1 to-bone/60 pb-12 -mb-12 px-4 -mx-4 animate-shimmer"
             style={{ textShadow: '0 10px 40px rgba(200,132,58,0.15)' }}
           >
             INKFORGE
